@@ -1,0 +1,38 @@
+.customDropdown {
+  .reactSelect__input {
+    min-height: 28px !important;
+  }
+  .reactSelect__option {
+    color: hsl(0, 0%, 41%);
+    border-bottom: 1px solid #d6d9db;
+    &:last-child {
+      border-bottom: 0;
+    }
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:checked {
+      // background-color: transparent;
+      background: transparent;
+      color: #2c88d1;
+    }
+  }
+  .reactSelect__input-container::placeholder {
+    color: #dddcd6;
+  }
+  .reactSelect__indicator-separator {
+    background-color: transparent;
+  }
+  .reactSelect__indicator svg {
+    color: #979797;
+    width: 25px;
+    height: 25px;
+  }
+  .reactSelect__option--is-selected {
+    color: #2c88d1 !important;
+  }
+  .reactSelect__control--is-disabled {
+    background-color: #e9ecef;
+  }
+}

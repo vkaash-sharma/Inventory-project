@@ -1,0 +1,301 @@
+@import "../Styles/variables.scss";
+
+.font-size-md {
+    font-weight: 400;
+    line-height: 24px; 
+    color: $grey-2;
+    letter-spacing: 0.5px; 
+}
+.font-size-xsm {
+    font-size: 0.875rem;  
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.25px; 
+}
+.font-12 { 
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.25px; 
+}
+.profileWrapper{
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+.backLargeBtn{
+    position: absolute;
+    right: 100%;
+    top: 0px;
+    margin-right: 16px;
+    .btn-secondary-outline{
+        white-space: nowrap;
+    }
+}
+    .profileDetailsSec{
+        .profileCover{
+            // remove this 'background' if my branch accepted
+            background: url(../../Assets/Images/coverbg.png);
+            padding: 24px;
+            margin: -24px -24px 0 -24px;
+            background-position: center top;
+            position: relative;
+            background-size: 100% 155px;
+            background-repeat: no-repeat;
+            .profilePic{
+                border-radius: 100px;
+                border: 3px solid #fff;
+                overflow: hidden;
+                margin-top: 50px;
+                width: 172px;
+                height: 172px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+            
+        }
+        h2{
+            font-size: 2.8125rem; 
+            font-weight: 400;
+            line-height: 52px;
+            color: $black;
+            margin-bottom: 10px;
+        }
+        h4{
+            font-size: 1.375rem;
+            font-weight: 500;
+            line-height: 28px;
+            margin-bottom: 20px;
+            color: $grey-1;
+        }
+        p{
+            @extend .font-size-md;          
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+      
+    }
+
+    .profileOtherInfoSec{
+        .divider{
+            background: #dadbda5b;
+            margin: 30px 0;    
+            opacity: .1;
+        }
+        .otherInfoSec{
+            h5{
+                @extend .font-size-md;
+                font-weight: 600;
+                letter-spacing: 0.1px; 
+                color: $grey-1;
+                margin-bottom: 20px;
+            }
+            .subtitle{
+                @extend .font-size-xsm;
+                font-weight: 400;
+                letter-spacing: 0.25px; 
+                color: $grey-3;
+            }
+            .opportunitiesGroup{
+                display: flex;
+                p{
+                    @extend .font-size-xsm;   
+                    letter-spacing: 0.1px; 
+                    margin-bottom: 0;
+                }
+                .opportunitiesSec{
+                    background-color: $primary-light;
+                    padding: 20px 18px;
+                    color: $primary-dark-text;
+                    width: 35%;
+                    h4{                        
+                        font-size: 22px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 28px; 
+                    }
+                }
+                .whoTaskSec{
+                    background-color: #eef6ef;  
+                    padding: 24px 16px;
+                    color: $grey-1;
+                    width: 65%;
+                    border-left: 1px solid #fff;
+                    display: flex;
+                    align-items: center;
+                    p{
+                        background: url(../../Assets/Images/lock-icon.svg);
+                        opacity: .4;
+                        padding-top: 24px;
+                        background-repeat: no-repeat;
+                        background-size: 20px;
+                    }
+                }
+            }
+            .skillsGroup{
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    li{
+                        @extend .font-size-xsm; 
+                        font-weight: 400;
+                        color: $darker-blue;
+                        border-bottom: 1px dashed rgba(25, 28, 26, 0.16); 
+                        margin-bottom: 20px;
+                        padding-bottom: 5px;
+                        width:80%;
+                    }
+                   
+                    
+                    &.endorsements{
+                       margin-top: 30px; 
+                       li{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 15px;
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                        span{
+                            @extend .font-12;
+                            color: $grey-5;
+                        }
+                       }
+                    }
+                    li:last-child {
+                        border-bottom: none;
+                      }
+                }
+            }
+        }
+    }
+    .interestsGroup{
+        .badge {
+            padding: 8px 16px;
+            margin-top: 8px;
+            border-radius: 8px; 
+            background-color: $light-blue !important;
+            color: $darker-blue;
+            margin-right: 8px;
+            letter-spacing: 0.1px; 
+            @extend .font-size-xsm; 
+        }
+    }
+.editProfileScreen{
+  .profileFormSec{
+    h1{
+        font-style: normal;
+        font-weight: 400;
+        line-height: 52px;
+        color: $secondary-color;
+    }
+  } 
+}
+.viewProfileShortInfo{
+    border-bottom: 1px solid rgba(25, 28, 26, 0.16);
+    padding: 24px 0 34px 0;
+    text-align: center;
+    .profilePic{
+        margin-bottom: 10px;
+        img{
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(25, 28, 26, 0.16);
+        }
+        .profileName{
+            background-color: $light-blue;
+            color: $darker-blue;
+            display: flex;
+            width: 60px;
+            border-radius: 100%;
+            height: 60px;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+    }
+    .editProfilePic{
+        width: 60px;
+        margin: 0 auto;
+        position: relative;
+        padding-bottom: 5px;
+    }
+    .userInfo{
+        h6{
+            font-weight: 500;
+            line-height: 28px;
+            color: $black;   
+            margin: 0         
+        }
+        span{
+            @extend .font-12;
+            color: $grey-5;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+  
+.profileDetailsSec{
+    .profileCover {
+      padding: 20px 20px 10px 20px;
+      margin: -15px -15px 0 -15px;
+      background-size: 100% 140px;
+      .profilePic {
+        margin-top: 50px;
+        width: 130px;
+        height: 130px;
+      }
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin-bottom: 5px;
+    }
+    h4 {
+        font-size: 0.875rem;
+        line-height: 20px;
+        margin-bottom: 15px;
+      }
+}
+.profileWrapper{
+    .whoopCustomTab.mt-4{
+        margin-top: 0 !important;
+        padding-top: 20px;
+    }
+}
+.profileOtherInfoSec .otherInfoSec .opportunitiesGroup {
+    .opportunitiesSec {
+        padding: 20px 18px;
+        width: 60%;
+    }
+    .whoTaskSec {
+        padding: 15px 16px;
+        width: 40%;
+    }
+}
+.interestsGroup .badge {
+    padding: 5px 10px;
+    margin-top: 6px;
+    border-radius: 6px;
+    margin-right: 6px;
+}
+.backLargeBtn {
+    margin: 10px 0 0 10px;
+    left: 0;
+    z-index: 99;
+    right: inherit;
+    .btn-secondary-outline{
+        padding: 6px 8px !important;
+    }
+  }
+
+}
