@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { loginWithEmailAndPassword } from "../../redux/actions/LoginActions";
@@ -9,14 +9,12 @@ import {
 } from "../../redux/actions/FilterAction";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  Navigate,
-  Link,
-} from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import toastr from "toastr";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { isLogin } from "../../_helpers/helper";
 import "./login.scss";
+import { FaFacebook, FaGoogle, FaLock } from "react-icons/fa";
 
 const SigninSchema = yup.object().shape({
   email: yup
@@ -29,168 +27,99 @@ const SigninSchema = yup.object().shape({
     .required("Please enter the Password"),
 });
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      redirectPath: localStorage.getItem("redirectPath") || "/companies",
-      submitted: 0,
-      isMobile: window.location.href.split("/")[3] === "mobile",
-    };
-  }
+const Login = ({
+  loginWithEmailAndPassword,
+  isMobile,
+  login,
+  skills,
+  locations,
+  interests,
+}) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [redirectPath, setRedirectPath] = useState(
+    localStorage.getItem("redirectPath") || "/companies"
+  );
+  const [submitted, setSubmitted] = useState(0);
 
-  componentDidMount() {
+  useEffect(() => {
     if (!document.body.classList.contains("loginPageWrapper")) {
       document.body.classList.add("loginPageWrapper");
     }
     localStorage.removeItem("redirectPath");
 
-    this.timeout = setInterval(() => {
-      this.setState((prevState) => ({ textIdx: prevState.textIdx + 1 }));
+    const timeout = setInterval(() => {
+      // Add logic here if needed
     }, 5000);
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (!document.body.classList.contains("loginPageWrapper")) {
-      document.body.classList.add("loginPageWrapper");
+    return () => {
+      clearInterval(timeout);
+      document.body.classList.remove("loginPageWrapper");
+    };
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
     }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timeout);
-    document.body.classList.remove("loginPageWrapper");
-  }
-
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (value, { setSubmitting }) => {
-    this.props.loginWithEmailAndPassword({
-      ...value,
-      isMobile: this.props.isMobile,
-    });
-    this.setState({ submitted: 1 });
+  const handleSubmit = (values, { setSubmitting }) => {
+    loginWithEmailAndPassword({ ...values, isMobile });
+    setSubmitted(1);
     setSubmitting(false);
   };
 
-  render() {
-    if (isLogin()) {
-      return <Navigate to={"/companies"} />;
-    }
-
-    if (this.state.submitted) {
-      if (
-        this?.props?.login?.error?.password ||
-        this?.props?.login?.error?.username
-      ) {
-        this.state.loading = 0;
-        // toastr.error(
-        //   this?.props?.login?.error?.password ||
-        //     this?.props?.login?.error?.username
-        // );
-      } else this.state.loading = 1;
-    }
-
-    return (
-      <React.Fragment>
-        <div className="loginScreen wrapper">
-          <Container>
-            <Card className="loginFormSec">
-              <h2>Sign In</h2>
-              <p className="font-size-sm">
-                Enter your email address and password to get started.
-              </p>
-              <Formik
-                validationSchema={SigninSchema}
-                onSubmit={this.handleSubmit}
-                initialValues={this.state}
-              >
-                {({
-                  values,
-                  errors,
-                  touched,
-                  handleChange,
-                  handleBlur,
-                  handleSubmit,
-                  isSubmitting,
-                }) => (
-                  <form className="pt-3 whoopForm" onSubmit={handleSubmit}>
-                    <div className="form-group mb-3">
-                      <label className="form-label" htmlFor="email">
-                        Email
-                      </label>
-                      <input
-                        className="form-control-SigninNew form-control"
-                        placeholder="Enter email"
-                        type="email"
-                        name="email"
-                        onBlur={handleBlur}
-                        value={values.email}
-                        onChange={handleChange}
-                      />
-                      {isSubmitting && this.props.login?.error?.username ? (
-                        <div className="errorMssg">
-                          {this.props.login.error.username}
-                        </div>
-                      ) : (
-                        errors.email && (
-                          <div className="errorMssg">{errors.email}</div>
-                        )
-                      )}
-                    </div>
-                    <div className="form-group mb-2">
-                      <label className="form-label" htmlFor="password">
-                        Password
-                      </label>
-                      <input
-                        className="form-control-SigninNew form-control"
-                        name="password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}
-                        placeholder="Enter password"
-                        type="password"
-                      />
-                      {errors.password ? (
-                        <div className="errorMssg">{errors.password}</div>
-                      ) : (
-                        isSubmitting && this.props.login?.error?.password && (
-                          <div className="errorMssg">
-                            {this.props.login.error.password}
-                          </div>
-                        )
-                      )}
-                    </div>
-                    <p className="forgotPassword">
-                      <Link to="/auth/forgot-password">Forgot Password?</Link>
-                    </p>
-                    <Row>
-                      <Col xs={12}>
-                        <button
-                          className="btn btn-primary loginBtn w-100"
-                          type="submit"
-                          disabled={isSubmitting}
-                        >
-                          Login
-                        </button>
-                      </Col>
-                    </Row>
-                  </form>
-                )}
-              </Formik>
-            </Card>
-            <p className="formBtmInfo">
-              New here? <Link to="/register">Create an account</Link>
-            </p>
-          </Container>
-        </div>
-      </React.Fragment>
-    );
+  if (isLogin()) {
+    return <Navigate to="/companies" />;
   }
-}
+
+  if (submitted) {
+    if (login.error.password || login.error.username) {
+      // toastr.error(login.error.password || login.error.username);
+    } else {
+      // Add logic here if needed
+    }
+  }
+
+  return (
+    <div className="background">
+      <div className="shape"></div>
+      <div className="shape lastShape"></div>
+      <form onSubmit={handleSubmit}>
+        <h3>Login Here</h3> <label for="username">Username</label>
+        <input
+          type="text"
+          placeholder="Email or Phone"
+          id="username"
+          value={email}
+          onChange={handleChange}
+        />
+         <label for="password">Password</label>
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          value={password}
+          onChange={handleChange}
+        />
+        <div className="pt-2 forgotPassword"><FaLock /><Link to="/auth/forgot-password">Forgot Password?</Link></div>
+        <button type="submit">Log In</button>
+        <div className="social">
+          <div className="go">
+          <FaGoogle /> Google{" "}
+          </div>
+          <div className="fb">
+           <FaFacebook /> Facebook {" "}
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 Login.propTypes = {
   loginWithEmailAndPassword: PropTypes.func.isRequired,

@@ -1,297 +1,297 @@
-// variable scss start
-@import "../../Assets/Styles/variables.scss";
-// variable scss end
+// // variable scss start
+// @import "../../Assets/Styles/variables.scss";
+// // variable scss end
 
-// Login page scss start
+// // Login page scss start
 
-body.loginPageWrapper {
-    background: url('../../Assets/Images/auth-bg.jpg') no-repeat;
-    background-size: cover;
-    padding-top: 0;
-}
+// body.loginPageWrapper {
+//     background: url('../../Assets/Images/auth-bg.jpg') no-repeat;
+//     background-size: cover;
+//     padding-top: 0;
+// }
 
-.loginScreen, .signupScreen {
-    padding: 20px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+// .loginScreen, .signupScreen {
+//     padding: 20px;
+//     margin: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     min-height: 100vh;
 
-    .card {
-        padding: 20px 30px 30px 30px !important;      
-        &::before{
-            display: none;
-        }
-        &::after{
-            background: url(../../Assets/Images/logo-icon.png) no-repeat;
-            background-position: center;
-            display: inline-block;
-            width: 90px;
-            height: 90px;
-            background-size: contain;
-            content: "";
-            position: absolute;
-            opacity: 0.08;
-            top: 15px;
-            right: 15px;
-        }
-    }
+//     .card {
+//         padding: 20px 30px 30px 30px !important;      
+//         &::before{
+//             display: none;
+//         }
+//         &::after{
+//             background: url(../../Assets/Images/logo-icon.png) no-repeat;
+//             background-position: center;
+//             display: inline-block;
+//             width: 90px;
+//             height: 90px;
+//             background-size: contain;
+//             content: "";
+//             position: absolute;
+//             opacity: 0.08;
+//             top: 15px;
+//             right: 15px;
+//         }
+//     }
 
-    .loginHeader {
-        padding: 12px 0;
+//     .loginHeader {
+//         padding: 12px 0;
 
-        img {
-            max-width: 180px;
-        }
+//         img {
+//             max-width: 180px;
+//         }
 
-        button {
-            background-color: transparent !important;
-        }
-    }
+//         button {
+//             background-color: transparent !important;
+//         }
+//     }
 
-    // .loginContent {
-    //     // margin: 20px 0;
-    //     margin-top: 10px;
-    //     background-color: #fff;
-    //     border-radius: 17px;
-    //     overflow: hidden;
+//     // .loginContent {
+//     //     // margin: 20px 0;
+//     //     margin-top: 10px;
+//     //     background-color: #fff;
+//     //     border-radius: 17px;
+//     //     overflow: hidden;
 
-    //     .loginLeftSec {
-    //         overflow: hidden;
+//     //     .loginLeftSec {
+//     //         overflow: hidden;
 
-    //         .loginImg {
-    //             display: flex;
-    //             flex-wrap: wrap;
-    //             flex-direction: column;
-    //             justify-content: center;
-    //             width: 100%;
+//     //         .loginImg {
+//     //             display: flex;
+//     //             flex-wrap: wrap;
+//     //             flex-direction: column;
+//     //             justify-content: center;
+//     //             width: 100%;
 
-    //             img {
-    //                 max-height: calc(100vh - 110px);
-    //             }
-    //         }
-    //     }
+//     //             img {
+//     //                 max-height: calc(100vh - 110px);
+//     //             }
+//     //         }
+//     //     }
 
-    //     .loginFormSec {
-    //         .loginIntroContent {
-    //             padding: 24px 64px 24px 64px;
-    //             border-bottom: solid 1px rgba(182, 182, 182, 0.41);
+//     //     .loginFormSec {
+//     //         .loginIntroContent {
+//     //             padding: 24px 64px 24px 64px;
+//     //             border-bottom: solid 1px rgba(182, 182, 182, 0.41);
 
-    //             .loginIntro {
-    //                 .loginFormSubHead {
-    //                     // font-family: $font-Gtsectra;
-    //                     font-size: 32px;
-    //                     font-weight: 800;
-    //                     margin-bottom: 0;
-    //                 }
+//     //             .loginIntro {
+//     //                 .loginFormSubHead {
+//     //                     // font-family: $font-Gtsectra;
+//     //                     font-size: 32px;
+//     //                     font-weight: 800;
+//     //                     margin-bottom: 0;
+//     //                 }
 
-    //                 .radioSec {
-    //                     .customRadio {
-    //                         width: 75%;
-    //                     }
-    //                 }
+//     //                 .radioSec {
+//     //                     .customRadio {
+//     //                         width: 75%;
+//     //                     }
+//     //                 }
 
-    //                 label {
-    //                     // font-family: $font-graphik;
-    //                     font-weight: 500;
-    //                 }
-    //             }
-    //         }
+//     //                 label {
+//     //                     // font-family: $font-graphik;
+//     //                     font-weight: 500;
+//     //                 }
+//     //             }
+//     //         }
 
-    //         .loginForms {
-    //             width: 65%;
-    //             margin: 0 auto;
+//     //         .loginForms {
+//     //             width: 65%;
+//     //             margin: 0 auto;
 
-    //             label {
-    //                 font-size: 14px;
-    //                 margin-bottom: 5px;
-    //             }
+//     //             label {
+//     //                 font-size: 14px;
+//     //                 margin-bottom: 5px;
+//     //             }
 
-    //             input {
-    //                 height: 40px;
-    //                 margin-bottom: 15px;
-    //             }
+//     //             input {
+//     //                 height: 40px;
+//     //                 margin-bottom: 15px;
+//     //             }
 
-    //             .forgotPassword {
-    //                 font-size: 14px;
-    //                 // color: $primaryColor;
-    //                 text-align: right;
+//     //             .forgotPassword {
+//     //                 font-size: 14px;
+//     //                 // color: $primaryColor;
+//     //                 text-align: right;
 
-    //                 a {
-    //                     text-decoration: none;
-    //                 }
-    //             }
+//     //                 a {
+//     //                     text-decoration: none;
+//     //                 }
+//     //             }
 
-    //             .formSigninNew {
-    //                 .form-group {
-    //                     position: relative;
+//     //             .formSigninNew {
+//     //                 .form-group {
+//     //                     position: relative;
 
-    //                     .errorMssg {
-    //                         position: absolute;
-    //                         bottom: -15px;
-    //                         font-size: 10px;
-    //                         color: #b6111f;
+//     //                     .errorMssg {
+//     //                         position: absolute;
+//     //                         bottom: -15px;
+//     //                         font-size: 10px;
+//     //                         color: #b6111f;
 
-    //                         img {
-    //                             width: 12px;
-    //                         }
-    //                     }
-    //                 }
-    //             }
+//     //                         img {
+//     //                             width: 12px;
+//     //                         }
+//     //                     }
+//     //                 }
+//     //             }
 
-    //             .loginIntro {
-    //                 margin-bottom: 30px;
+//     //             .loginIntro {
+//     //                 margin-bottom: 30px;
 
-    //                 .loginIntroTxt {
-    //                     font-size: 52px;
-    //                     // font-family: $font-Gtsectra;
-    //                     font-weight: 800;
-    //                     margin-bottom: 0;
-    //                     line-height: 52px;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+//     //                 .loginIntroTxt {
+//     //                     font-size: 52px;
+//     //                     // font-family: $font-Gtsectra;
+//     //                     font-weight: 800;
+//     //                     margin-bottom: 0;
+//     //                     line-height: 52px;
+//     //                 }
+//     //             }
+//     //         }
+//     //     }
+//     // }
 
-    .loginBtn {
-        padding: 12px 15px;
-        font-size: 15px;
-        font-weight: 500;
-        letter-spacing: .5px;
-        border-radius: 100px;
-    }
-}
+//     .loginBtn {
+//         padding: 12px 15px;
+//         font-size: 15px;
+//         font-weight: 500;
+//         letter-spacing: .5px;
+//         border-radius: 100px;
+//     }
+// }
 
 
 
-.loginBtnSec {
-    width: 100%;
-    margin: 30px auto 0;
+// .loginBtnSec {
+//     width: 100%;
+//     margin: 30px auto 0;
 
-    .loginBtn {
-        border-radius: 8px;
-        background-color: #8897a2;
-        color: #fff;
-        width: 100%;
-        padding: 10px;
-        border: 0;
+//     .loginBtn {
+//         border-radius: 8px;
+//         background-color: #8897a2;
+//         color: #fff;
+//         width: 100%;
+//         padding: 10px;
+//         border: 0;
 
-        &:hover,
-        &:active,
-        &:focus {
-            // background-color: $primaryColor;
-            color: #fff;
-        }
-    }
-}
+//         &:hover,
+//         &:active,
+//         &:focus {
+//             // background-color: $primaryColor;
+//             color: #fff;
+//         }
+//     }
+// }
 
-.divider {
-    display: table;
-    text-align: center;
-    width: 80%;
-    margin: 20px auto 25px;
-    max-width: 600px
-}
+// .divider {
+//     display: table;
+//     text-align: center;
+//     width: 80%;
+//     margin: 20px auto 25px;
+//     max-width: 600px
+// }
 
-.divider span {
-    display: table-cell;
-    position: relative
-}
+// .divider span {
+//     display: table-cell;
+//     position: relative
+// }
 
-.divider span:first-child,
-.divider span:last-child {
-    width: 50%;
-    top: 14px;
-    background-size: 100% 1px;
-    background-position: 0 0, 0 100%;
-    background-repeat: no-repeat
-}
+// .divider span:first-child,
+// .divider span:last-child {
+//     width: 50%;
+//     top: 14px;
+//     background-size: 100% 1px;
+//     background-position: 0 0, 0 100%;
+//     background-repeat: no-repeat
+// }
 
-.divider span:first-child {
-    background-image: linear-gradient(90deg, transparent, #34495e)
-}
+// .divider span:first-child {
+//     background-image: linear-gradient(90deg, transparent, #34495e)
+// }
 
-.divider span:nth-child(2) {
-    color: #34495e;
-    padding: 0px 5px;
-    width: auto;
-    white-space: nowrap;
-    font-weight: 600;
-    line-height: 30px
-}
+// .divider span:nth-child(2) {
+//     color: #34495e;
+//     padding: 0px 5px;
+//     width: auto;
+//     white-space: nowrap;
+//     font-weight: 600;
+//     line-height: 30px
+// }
 
-.divider span:last-child {
-    background-image: linear-gradient(90deg, #34495e, transparent)
-}
+// .divider span:last-child {
+//     background-image: linear-gradient(90deg, #34495e, transparent)
+// }
 
-// Login page scss end
+// // Login page scss end
 
-@media screen and (max-width: 767px) {
-    .loginScreen {
-        .loginHeader {
-            justify-content: center;
-            margin-top: 40px;
-        }
+// @media screen and (max-width: 767px) {
+//     .loginScreen {
+//         .loginHeader {
+//             justify-content: center;
+//             margin-top: 40px;
+//         }
 
-        .loginContent {
-            background: transparent;
+//         .loginContent {
+//             background: transparent;
 
-            .loginLeftSec {
-                display: none;
-            }
+//             .loginLeftSec {
+//                 display: none;
+//             }
 
-            .loginFormSec {
-                min-height: calc(100vh - 140px);
+//             .loginFormSec {
+//                 min-height: calc(100vh - 140px);
 
-                .loginForms {
-                    padding: 50px 0 0;
-                    width: 100%;
+//                 .loginForms {
+//                     padding: 50px 0 0;
+//                     width: 100%;
 
-                    .loginIntro {
-                        display: flex;
-                        margin-bottom: 0;
+//                     .loginIntro {
+//                         display: flex;
+//                         margin-bottom: 0;
 
-                        .loginIntroTxt {
-                            font-size: 24px;
-                        }
-                    }
+//                         .loginIntroTxt {
+//                             font-size: 24px;
+//                         }
+//                     }
 
-                    .loginBtnSec {
-                        width: 90%;
-                        margin: 60px auto 0;
-                        bottom: 30px;
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        // width: 100%;
-                        // bottom: 30px;
-                        // position: unset;
-                        // left: 0;
-                        // right: 0;
-                    }
-                }
-            }
-        }
-    }
-}
+//                     .loginBtnSec {
+//                         width: 90%;
+//                         margin: 60px auto 0;
+//                         bottom: 30px;
+//                         position: absolute;
+//                         left: 0;
+//                         right: 0;
+//                         // width: 100%;
+//                         // bottom: 30px;
+//                         // position: unset;
+//                         // left: 0;
+//                         // right: 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
-    .loginScreen .loginContent .loginFormSec .loginForms {
-        width: 85%;
+// @media screen and (min-width: 768px) and (max-width: 991px) {
+//     .loginScreen .loginContent .loginFormSec .loginForms {
+//         width: 85%;
 
-        h5.loginIntroTxt {
-            font-size: 42px !important;
-            line-height: 42px !important;
-        }
-    }
-}
+//         h5.loginIntroTxt {
+//             font-size: 42px !important;
+//             line-height: 42px !important;
+//         }
+//     }
+// }
 
-@media screen and (max-height: 580px) {
-    .loginScreen .loginContent .loginFormSec .loginForms .loginBtnSec {
-        position: relative;
-        bottom: 0;
-        width: 100%;
-    }
-}
+// @media screen and (max-height: 580px) {
+//     .loginScreen .loginContent .loginFormSec .loginForms .loginBtnSec {
+//         position: relative;
+//         bottom: 0;
+//         width: 100%;
+//     }
+// }

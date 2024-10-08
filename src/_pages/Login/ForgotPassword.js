@@ -82,60 +82,26 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="loginScreen wrapper">
-      <Container>
-        <Card className="loginFormSec">
-          <h2>Forgot Password</h2>
-          {linkSent ? (
-            <>
-              <p>Verification link sent successfully!</p>
-            </>
-          ) : (
-            <>
-              <p className="font-size-sm">
-                Please enter the email address you'd like your password reset
-                information sent to:
-              </p>
-              <Form className="pt-3 whoopForm">
-                <div className="formInnerSec">
-                  <Row>
-                    <Col lg={12}>
-                      <Form.Group className="mb-3">
-                        <Form.Label required>Enter email address</Form.Label>
-                        <Form.Control
-                          type="email"
-                          name="email"
-                          placeholder="Enter email address"
-                          value={form.email}
-                          onChange={onChange}
-                        />
-                        <InputError
-                          submitted={submitted}
-                          error={error}
-                          name="email"
-                        />
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                  <div className="pt-2">
-                    <Button
-                      variant="primary"
-                      className="btn btn-primary loginBtn w-100"
-                      onClick={onSubmit}
-                      disabled={isLoading}
-                    >
-                      Request reset link
-                    </Button>
-                  </div>
-                </div>
-              </Form>
-            </>
-          )}
-        </Card>
-        <p className="formBtmInfo">
-          Back to <Link to="/auth/login">Login</Link>
-        </p>
-      </Container>
+    <div className="background">
+      <div className="shape"></div>
+      <div className="shape lastShape"></div>
+      <form >
+        <h3>Forget Password</h3>
+        <div>Please enter the email address you'd like your password reset information send to:</div> 
+        
+        <label for="username">Enter email address</label>
+        <input
+          type="text"
+          placeholder="Enter Email address"
+          id="username"
+          // value={email}
+          // onChange={handleChange}
+        />
+       
+        <button type="submit">Request Reset Link</button>
+        <div className="backLogin text-center pt-4">Back to<Link to="/auth/login">Login?</Link></div>
+       
+      </form>
     </div>
   );
 };

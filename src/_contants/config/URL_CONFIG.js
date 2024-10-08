@@ -1,4 +1,4 @@
-const Api_url = "http://164.52.209.160:3012/api/";
+const Api_url = "http://192.168.1.3:3012/api/";
 // const Api_url = "http://192.168.29.17:3012/api/";
 export const URL_CONFIG = {
   DEV_URL: Api_url,
