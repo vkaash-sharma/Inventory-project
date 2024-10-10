@@ -1,4 +1,4 @@
-import logo from "../../Assets/Images/logo.png";
+import logo from "../../Assets/Images/logo1.png";
 import Container from "react-bootstrap/Container";
 import { Badge, Button, Dropdown, Image, Navbar, Nav } from "react-bootstrap";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";

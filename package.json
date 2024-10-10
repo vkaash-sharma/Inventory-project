@@ -1,8 +1,9 @@
 {
-  "name": "whoop_react",
+  "name": "inventory_nexus",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,6 +12,7 @@
     "formik": "^2.4.5",
     "history": "^5.3.0",
     "install": "^0.13.0",
+    "jwt-decode": "^4.0.0",
     "locomotive-scroll": "^4.1.4",
     "moment": "^2.29.4",
     "npm": "^10.2.4",

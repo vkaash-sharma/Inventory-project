@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { loginWithEmailAndPassword } from "../../redux/actions/LoginActions";
-import {
-  setSkills,
-  setLocations,
-  setInterests,
-} from "../../redux/actions/FilterAction";
+import { setSkills, setLocations, setInterests } from "../../redux/actions/FilterAction";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Navigate, Link } from "react-router-dom";
@@ -15,6 +11,9 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { isLogin } from "../../_helpers/helper";
 import "./login.scss";
 import { FaFacebook, FaGoogle, FaLock } from "react-icons/fa";
+import { useGoogleLogin } from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
+import axios from "axios";
 
 const SigninSchema = yup.object().shape({
   email: yup
@@ -31,10 +30,11 @@ const Login = ({
   loginWithEmailAndPassword,
   isMobile,
   login,
-  skills,
-  locations,
-  interests,
 }) => {
+  const [userGoogle , setUserGoogle] = useState();
+  console.log("here is the google user" , userGoogle)
+  const [profile , setProfile] = useState();
+  console.log("here is the profile" , profile)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirectPath, setRedirectPath] = useState(
@@ -58,6 +58,32 @@ const Login = ({
     };
   }, []);
 
+
+  useEffect(
+    () => {
+        if (userGoogle) {
+            axios
+                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userGoogle.access_token}`, {
+                    headers: {
+                        Authorization: `Bearer ${userGoogle.access_token}`,
+                        Accept: 'application/json'
+                    }
+                })
+                .then((res) => {
+                    setProfile(res.data);
+                })
+                .catch((err) => console.log(err));
+        }
+    },
+    [ userGoogle ]
+);
+
+
+  const loginFn = useGoogleLogin({
+    onSuccess: tokenResponse => setUserGoogle(tokenResponse),
+    onError: (error) => console.log('Login Failed:', error)
+  });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "email") {
@@ -67,10 +93,10 @@ const Login = ({
     }
   };
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    loginWithEmailAndPassword({ ...values, isMobile });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    loginWithEmailAndPassword({ email, password, isMobile });
     setSubmitted(1);
-    setSubmitting(false);
   };
 
   if (isLogin()) {
@@ -90,30 +116,36 @@ const Login = ({
       <div className="shape"></div>
       <div className="shape lastShape"></div>
       <form onSubmit={handleSubmit}>
-        <h3>Login Here</h3> <label for="username">Username</label>
+        <h3>Login Here</h3>
+        <label htmlFor="email">Email</label>
         <input
           type="text"
           placeholder="Email or Phone"
-          id="username"
+          id="email"
+          name="email"
           value={email}
           onChange={handleChange}
         />
-         <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Password"
           id="password"
+          name="password"
           value={password}
           onChange={handleChange}
         />
-        <div className="pt-2 forgotPassword"><FaLock /><Link to="/auth/forgot-password">Forgot Password?</Link></div>
+        <div className="pt-2 forgotPassword">
+          <FaLock />
+          <Link to="/auth/forgot-password">Forgot Password?</Link>
+        </div>
         <button type="submit">Log In</button>
         <div className="social">
-          <div className="go">
-          <FaGoogle /> Google{" "}
+          <div className="go" onClick={() => loginFn()}>
+            <FaGoogle /> Google{" "}
           </div>
           <div className="fb">
-           <FaFacebook /> Facebook {" "}
+            <FaFacebook /> Facebook{" "}
           </div>
         </div>
       </form>
